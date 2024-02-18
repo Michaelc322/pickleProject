@@ -14,6 +14,16 @@ const Section = styled.section`
     
 `
 
+const SectionTwo = styled.section`
+    display: flex;
+    padding: 80px;
+    align-items: center;
+    background-color: #121212;
+    height: 65vh;
+    flex-direction: column;
+    
+`
+
 const UserSlide = keyframes`
     0% {
         opacity: 0%;
@@ -105,7 +115,6 @@ const Box = styled.div`
     backdrop-filter: blur(20px);
     z-index: 11;
     transform: translate(-80px, 50px);
-
     animation: ${UserSlide} 1s linear;
 
 `
@@ -158,6 +167,48 @@ const PickleImage = styled.div`
     }
 `
 
+const GetStarted = styled.button`
+    display: flex;
+    justify-content: center;
+    margin-top: 6rem;
+    background-image: linear-gradient(90deg, #c2fd15, #70d8a9);
+    border: none;
+    border-radius: 50px;
+    width: 350px;
+    height:50px;
+    text-align: center;
+    padding: 10px 60px;
+    font-size: 20px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+    a{
+        line-height: 28px;
+        text-decoration: none;
+        color: white;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.7);
+        transition: 0.5s;
+    }
+
+    a:after{
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+
+    &:hover a{
+        padding-right: 25px;
+    }
+
+    &:hover a:after{
+        opacity: 1;
+        right: 0;
+    }
+    
+`
+
 
 
 function Home(){    
@@ -192,7 +243,7 @@ function Home(){
 
                 </Testimonial>
             </Section>
-            <Section>
+            <SectionTwo>
                 <Container>
                     <TitleText>Overview of pickleBOT</TitleText>
                     <BulletPoints>
@@ -201,7 +252,12 @@ function Home(){
                     <p><SpecWords>&gt;</SpecWords> Schedule this reservation to execute periodically.</p>
                     </BulletPoints>
                 </Container>
-            </Section>
+                <Container>
+                    <GetStarted>
+                        <a href="/getstarted">Get Started</a>
+                    </GetStarted>
+                </Container>
+            </SectionTwo>
         </>
     )
 }
