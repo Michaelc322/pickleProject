@@ -49,7 +49,7 @@ const NavLink = styled.a`
     animation: ${FadeUp} 0.5s linear;
     &:hover:after{
         width: 100%;
-        transition:0.3s;
+        transition: 0.3s;
     }
 
 
@@ -58,10 +58,10 @@ const NavLink = styled.a`
         position: absolute;
         background-image: linear-gradient(90deg, #c2fd15, #70d8a9);
         height: 3px;
-        width: 0%;
+        width: 0;
         left: 0;
         bottom: -10px;
-
+        transition: 0.3s;
     
     }
 `
@@ -97,8 +97,6 @@ function Navbar(){
             </LogoNav>
 
             <nav>
-                <NavLink href="about">About</NavLink>
-                <NavLink href="whyus">Why Us?</NavLink>
                 <NavLink href="getstarted">Get Started</NavLink>
             </nav>
 

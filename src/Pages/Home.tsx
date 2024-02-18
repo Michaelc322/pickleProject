@@ -1,9 +1,12 @@
 import styled, { keyframes } from "styled-components"
 import { FadeUp, SlideInFadeLeft, SlideInFadeRight } from "../Styles/AnimationComponents"
+import { useEffect, useRef, useState } from "react"
+import { useInView } from "react-intersection-observer";
 
-const Welcome = styled.section`
+
+const Section = styled.section`
     display: flex;
-    justify-content: center;
+    padding: 80px;
     align-items: center;
     background-color: #121212;
     height: 100vh;
@@ -58,8 +61,37 @@ const Testimonial = styled.div`
 
 
 `
+const Container = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 1150px;
+    font-family: Poppins;
+`
 
-const User = styled.div`
+const TitleText = styled.h1`
+    padding: 20px;
+    background-image: linear-gradient(90deg, #c2fd15, #70d8a9);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 50px;
+
+`
+
+const BulletPoints = styled.div`
+    display:flex;
+    flex-direction: column;
+    text-align: left;
+
+    p{
+        font-size: 17px;
+        margin-bottom: 10px;
+    }
+`
+
+const Box = styled.div`
     display: flex;
     flex-direction: column;
     font-family: Poppins;
@@ -128,12 +160,13 @@ const PickleImage = styled.div`
 
 
 
-function Home(){
+function Home(){    
+
     return(
         <>
-            <Welcome>
+            <Section>
                 <IntroBox>
-                    <WelcomeMsg><SpecWords data-text="pickleBOT">pickleBOT </SpecWords>is an innovative way to <SpecWords data-text="reserve">reserve</SpecWords> a pickleball court.</WelcomeMsg>
+                    <WelcomeMsg><SpecWords>pickleBOT </SpecWords>is an innovative way to <SpecWords>reserve</SpecWords> a pickleball court.</WelcomeMsg>
                 </IntroBox>
 
 
@@ -141,7 +174,7 @@ function Home(){
                     <PickleImage>
                         <img src="./images/peopleplayingl.jpg"/>
                     </PickleImage>
-                    <User>
+                    <Box>
                         <UserProfile>
                         <ProfilePic>
                             <img src="./images/fsupbinstaprofile.png"/>
@@ -154,11 +187,21 @@ function Home(){
                         <TMessage><p>pickleBOT has dramatically improved the amount of courts 
                         we are able to reserve in Tallahassee. We are now able to hold full practices with over 80+ members
                         without worrying about not having enough space</p></TMessage>
-                    </User>
+                    </Box>
 
 
                 </Testimonial>
-            </Welcome>
+            </Section>
+            <Section>
+                <Container>
+                    <TitleText>Overview of pickleBOT</TitleText>
+                    <BulletPoints>
+                    <p><SpecWords>&gt;</SpecWords> Set up specific court and time reservations.</p>
+                    <p><SpecWords>&gt;</SpecWords> Easily configurable to meet needs.</p>
+                    <p><SpecWords>&gt;</SpecWords> Schedule this reservation to execute periodically.</p>
+                    </BulletPoints>
+                </Container>
+            </Section>
         </>
     )
 }
