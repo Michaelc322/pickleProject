@@ -33,14 +33,13 @@ const NavLink = styled.a`
 
     color: #ffffff;
     text-align: center;
-    font-family: Josefin Sans;
+    font-family: Poppins;
     text-decoration: none;
     padding-left: 5px;
     padding-right: 5px;
     margin-right:40px;
     font-size: 18px;
     font-weight: 400;
-    letter-spacing: 3px;
     position: relative;
     
     background-image: linear-gradient(90deg, white, white);

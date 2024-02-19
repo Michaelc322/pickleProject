@@ -4,12 +4,13 @@ import { useEffect, useRef, useState } from "react"
 import { useInView } from "react-intersection-observer";
 
 
+
 const Section = styled.section`
     display: flex;
     padding: 80px;
     align-items: center;
     background-color: #121212;
-    height: 100vh;
+    height: 80vh;
     flex-direction: column;
     
 `
@@ -79,6 +80,17 @@ const Container = styled.div`
     position: relative;
     width: 1150px;
     font-family: Poppins;
+`
+
+const SmallContainer = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 200px;
+    font-family: Poppins;
+    margin-top: 80px;
 `
 
 const TitleText = styled.h1`
@@ -167,47 +179,62 @@ const PickleImage = styled.div`
     }
 `
 
-const GetStarted = styled.button`
+const GetStartedButton = styled.button`
     display: flex;
     justify-content: center;
-    margin-top: 6rem;
     background-image: linear-gradient(90deg, #c2fd15, #70d8a9);
     border: none;
     border-radius: 50px;
-    width: 350px;
+    width: 300px;
     height:50px;
     text-align: center;
     padding: 10px 60px;
     font-size: 20px;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+    transform: scale(1);
+    transition: 0.5s;
     a{
+        width:100%;
         line-height: 28px;
         text-decoration: none;
         color: white;
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.7);
         transition: 0.5s;
+        font-family: Poppins;
     }
 
+     
     a:after{
-        content: '\00bb';
+        content: ">>>";
+        font-family: Josefin Sans;
         position: absolute;
+        line-height: 28px;
         opacity: 0;
-        top: 0;
+        top: 10px;
         right: -20px;
         transition: 0.5s;
     }
 
 
+    &:hover a:after{
+        padding-right: 50px;
+    }
     &:hover a{
         padding-right: 25px;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+        transition: 0.5s ease-in-out;
     }
 
     &:hover a:after{
         opacity: 1;
         right: 0;
     }
-    
+
 `
+
 
 
 
@@ -249,14 +276,14 @@ function Home(){
                     <BulletPoints>
                     <p><SpecWords>&gt;</SpecWords> Set up specific court and time reservations.</p>
                     <p><SpecWords>&gt;</SpecWords> Easily configurable to meet needs.</p>
-                    <p><SpecWords>&gt;</SpecWords> Schedule this reservation to execute periodically.</p>
+                    <p><SpecWords>&gt;</SpecWords> Schedule the reservation to execute periodically.</p>
                     </BulletPoints>
                 </Container>
-                <Container>
-                    <GetStarted>
-                        <a href="/getstarted">Get Started</a>
-                    </GetStarted>
-                </Container>
+                <SmallContainer>
+                    <GetStartedButton>
+                        <a href="/getstarted">GetStarted</a>
+                    </GetStartedButton>
+                </SmallContainer>
             </SectionTwo>
         </>
     )
