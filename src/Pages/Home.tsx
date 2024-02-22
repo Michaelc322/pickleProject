@@ -1,7 +1,5 @@
 import styled, { keyframes } from "styled-components"
-import { FadeUp, SlideInFadeLeft, SlideInFadeRight } from "../Styles/AnimationComponents"
-import { useEffect, useRef, useState } from "react"
-import { useInView } from "react-intersection-observer";
+import { FadeUp, SlideInFadeLeft, SlideInFadeRight } from "../Styles/AnimationComponents";
 
 
 

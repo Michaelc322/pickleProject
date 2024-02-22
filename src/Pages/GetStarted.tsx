@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { FadeUp, SlideInFadeLeft } from "../Styles/AnimationComponents";
+import { SlideInFadeLeft } from "../Styles/AnimationComponents";
 import { Keyword, KeywordAssigned, KeywordName } from "../Styles/CodeSnippet";
 const Section = styled.section`
     display: flex;
