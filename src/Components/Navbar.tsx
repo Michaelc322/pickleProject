@@ -1,6 +1,4 @@
-import React from 'react'
-import { FaBars } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+
 import styled, { keyframes } from 'styled-components';
 import { SlideInFadeRight } from '../Styles/AnimationComponents';
 
@@ -22,11 +20,12 @@ const Nav = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #1a1c1a;
+    background: #1a1a1a;
     height: 80px;
     width: 100%;
     overflow: hidden;
     z-index: 100;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5)
 `
 
 const NavLink = styled.a`

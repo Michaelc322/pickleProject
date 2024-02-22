@@ -1,9 +1,10 @@
-import ReactDOM from "react-dom";
+
 import Navbar from "./Components/Navbar.tsx";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./Pages/Home.tsx";
 import GetStarted from "./Pages/GetStarted.tsx";
 import { Helmet } from "react-helmet";
+import Footer from "./Components/Footer.tsx";
 
 export default function App(){
   return(
@@ -21,6 +22,8 @@ export default function App(){
 
         </Routes>
     </BrowserRouter>
+
+    <Footer/>
     </>
   )
 }

@@ -147,7 +147,8 @@ const Name = styled.div`
     }
 `
 const TMessage = styled.div`
-
+    font-family: Quicksand;
+    line-height: 23px;
     position: relative;
     p{
         color: white;
@@ -262,9 +263,10 @@ function Home(){
                             <p>@pickleballfsu</p>
                         </Name>
                         </UserProfile>
-                        <TMessage><p>pickleBOT has dramatically improved the amount of courts 
+                        <TMessage><p>pickleBOT is so good. i love pickleBOT. pickleBOT is life.</p></TMessage>
+                        {/* pickleBOT has dramatically improved the amount of courts 
                         we are able to reserve in Tallahassee. We are now able to hold full practices with over 80+ members
-                        without worrying about not having enough space</p></TMessage>
+                        without worrying about not having enough space */}
                     </Box>
 
 
