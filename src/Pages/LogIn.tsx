@@ -23,7 +23,10 @@ export default function LogIn() {
                     <Fields type="text" placeholder='Enter email...' value={data.email} onChange={(e: React.FormEvent<HTMLInputElement>) => setData({...data, email: e.currentTarget.value})}/>
                     <InputLabel>Password</InputLabel>
                     <Fields type="text" placeholder='Enter password...' value={data.password} onChange={(e: React.FormEvent<HTMLInputElement>) => setData({...data, password: e.currentTarget.value})}/>
-                    <SubmitButton type='submit'><span>Submit</span></SubmitButton>
+
+
+                    
+                    <SubmitButton type='submit'><span>Log In</span></SubmitButton>
                 </FormBox>
             </FormContainer>
         </Container>

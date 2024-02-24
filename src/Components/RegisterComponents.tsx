@@ -4,12 +4,14 @@ import { FadeUp, SlideInFadeLeft, SlideInFadeRight } from "../Styles/AnimationCo
 
 
 const Section = styled.section`
+    position: relative;
     display: flex;
     padding: 80px;
     align-items: center;
     background-color: #121212;
-    height: 80vh;
+    height: calc(100vh - 80px);
     flex-direction: column;
+    justify-content: center;
     
 `
 
@@ -76,8 +78,44 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     position: relative;
-    width: 1150px;
+    width: 30%;
     font-family: Poppins;
+
+    &::before, &::after{
+        content: "";
+        position: absolute;
+        inset: -0.1rem;
+        background-image: conic-gradient(
+            from var(--gradient-angle),
+             #c2fd15, 
+             #70d8a9,
+             #66ff60,
+             #70d8a9,
+             #c2fd15);
+        border-radius: 20px;
+        animation: rotation 10s linear infinite;
+        z-index: 1;
+    
+    }
+
+    &::after{
+        filter: blur(.38rem);
+    }
+    @property --gradient-angle{
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+    }
+
+    @keyframes rotation {
+        0% {
+            --gradient-angle: 0deg;
+        }
+        100%{
+            --gradient-angle: 360deg;
+        }
+    }
+
 `
 
 const SmallContainer = styled.div`
@@ -97,6 +135,8 @@ const TitleText = styled.h1`
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 50px;
+    font-family: Josefin Sans;
+    margin-bottom: 20px;
 
 `
 
@@ -129,70 +169,68 @@ const Box = styled.div`
 
 `
 
-const UserProfile = styled.div`
-    display: flex;
 
-`
-const Name = styled.div`
-    display: flex;
-    flex-direction: column;
-    font-family: Poppins;
-    p{
-        color: #111111
-    }
-    h2{
-        line-height: 24px;
-    }
-`
-const TMessage = styled.div`
-    font-family: Quicksand;
-    line-height: 23px;
+
+export const FormContainer = styled.div`
+    width: 100%;
+    background-color: #131313;
+    border-radius: 20px;
+    z-index: 5;
     position: relative;
-    p{
+    h1{
+        margin-bottom: 20px;
         color: white;
+        font-family: Poppins;
+        padding: 20px;
+        text-align: center;
     }
-`
-const ProfilePic = styled.div`
-    position: relative;
-    img{
-        border-radius: 50%;
-        height: 50px;
-        margin-right: 12px;
-    }
-`
-const PickleImage = styled.div`
-    position: relative;
-    width: 800px;
-    height: 400px;
-    overflow: hidden;
-    animation: ${SlideInFadeRight} 1s linear;
-    img{
-        z-index: 8;
+
+    h1::before{
+        content: "";
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 10px;
+        width: 25px;
+        height: 3px;
+        background: linear-gradient(90deg, #c2fd15, #70d8a9);
+        top: 50px;
     }
+
+    
 `
 
-const GetStartedButton = styled.button`
+export const Fields = styled.input`
+    font-family: Quicksand;
+    color: white;
+    font-size: 14px;
+    padding: 15px;
+    margin: 5px 0px 20px 0;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #111111;
+    background: #1d1d1d;
+    transition: all 0.3s ease;
+
+    &:focus{
+        border-color:#c2fd15;
+    }
+
+`
+
+export const SubmitButton = styled.button`
     display: flex;
-    justify-content: center;
     background-image: linear-gradient(90deg, #c2fd15, #70d8a9);
     border: none;
     border-radius: 50px;
-    width: 300px;
-    height:50px;
+    height:40px;
     text-align: center;
-    padding: 10px 60px;
-    font-size: 20px;
+    margin-top: 10px;
+    font-size: 18px;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
     transform: scale(1);
     transition: 0.5s;
-    a{
+    cursor: pointer;
+    position: relative;
+
+    span{
         width:100%;
         line-height: 28px;
         text-decoration: none;
@@ -200,38 +238,65 @@ const GetStartedButton = styled.button`
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.7);
         transition: 0.5s;
         font-family: Poppins;
+        top: 5px;
+        position: relative;
     }
 
      
-    a:after{
+    span:after{
         content: ">>>";
         font-family: Josefin Sans;
         position: absolute;
         line-height: 28px;
         opacity: 0;
-        top: 10px;
+        top: 0px;
         right: -20px;
         transition: 0.5s;
     }
 
-
-    &:hover a:after{
+    &:hover span:after{
         padding-right: 50px;
     }
-    &:hover a{
+    &:hover span{
         padding-right: 25px;
     }
 
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
         transition: 0.5s ease-in-out;
     }
 
-    &:hover a:after{
+    &:hover span:after{
         opacity: 1;
         right: 0;
+    }
+`
+
+export const InputLabel = styled.label`
+    font-family: Quicksand;
+    font-size: 15px;
+    color: white;
+
+
+`
+
+export const FormBox = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 40px 60px;
+`
+
+export const SmallText = styled.h2`
+    font-family: Quicksand;
+    color: #414141;
+    font-size: 13px;
+    margin-top: 20px;
+    a{
+        color: #78a000;
     }
 
 `
 
-export { Section, SectionTwo, IntroBox, WelcomeMsg, SpecWords, Testimonial, Container, SmallContainer, TitleText, BulletPoints, Box, UserProfile, Name, TMessage, ProfilePic, PickleImage, GetStartedButton }
+export { Section, SectionTwo, IntroBox, WelcomeMsg, SpecWords, Testimonial, Container, SmallContainer, TitleText, BulletPoints, Box }

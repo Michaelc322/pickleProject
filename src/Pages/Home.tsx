@@ -281,7 +281,7 @@ function Home(){
                 </Container>
                 <SmallContainer>
                     <GetStartedButton>
-                        <a href="/getstarted">GetStarted</a>
+                        <a href="/getstarted">Get Started</a>
                     </GetStartedButton>
                 </SmallContainer>
             </SectionTwo>
