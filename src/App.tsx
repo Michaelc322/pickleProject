@@ -5,6 +5,8 @@ import Home from "./Pages/Home.tsx";
 import GetStarted from "./Pages/GetStarted.tsx";
 import { Helmet } from "react-helmet";
 import Footer from "./Components/Footer.tsx";
+import Register from "./Pages/Register.tsx";
+import LogIn from "./Pages/LogIn.tsx";
 
 export default function App(){
   return(
@@ -19,7 +21,8 @@ export default function App(){
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/getstarted" element={<GetStarted/>}/>
-
+          <Route path="/register" element={<Register/>}/>
+          <Route path="/login" element={<LogIn/>}/>
         </Routes>
     </BrowserRouter>
 

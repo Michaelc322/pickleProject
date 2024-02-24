@@ -96,6 +96,7 @@ function Navbar(){
 
             <nav>
                 <NavLink href="getstarted">Get Started</NavLink>
+                <NavLink href="login">Log In</NavLink>
             </nav>
 
               
