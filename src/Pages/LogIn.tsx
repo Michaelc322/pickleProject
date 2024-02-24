@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Container, Fields, FormBox, FormContainer, InputLabel, Section, SubmitButton } from '../Components/LogInComponents';
+import { Box, Container, Fields, FormBox, FormContainer, InputLabel, Section, SmallText, SubmitButton, TitleText } from '../Components/LogInComponents';
 
 export default function LogIn() { 
 
@@ -27,6 +27,7 @@ export default function LogIn() {
                 </FormBox>
             </FormContainer>
         </Container>
+        <SmallText>Don't have an account? <a href="register">Create new account</a></SmallText>
     </Section>
   )
 }

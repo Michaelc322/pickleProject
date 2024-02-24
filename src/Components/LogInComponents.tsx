@@ -135,6 +135,8 @@ const TitleText = styled.h1`
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 50px;
+    font-family: Josefin Sans;
+    margin-bottom: 20px;
 
 `
 
@@ -180,6 +182,7 @@ export const FormContainer = styled.div`
         color: white;
         font-family: Poppins;
         padding: 20px;
+        text-align: center;
     }
 
     h1::before{
@@ -188,18 +191,27 @@ export const FormContainer = styled.div`
         width: 25px;
         height: 3px;
         background: linear-gradient(90deg, #c2fd15, #70d8a9);
-        top: 54px;
+        top: 50px;
     }
 
     
 `
 
 export const Fields = styled.input`
+    font-family: Quicksand;
+    color: white;
+    font-size: 14px;
     padding: 15px;
     margin: 5px 0px 20px 0;
     border-radius: 10px;
-    border: none;
-    background: #f5f5f5;
+    outline: none;
+    border: 1px solid #111111;
+    background: #1d1d1d;
+    transition: all 0.3s ease;
+
+    &:focus{
+        border-color:#c2fd15;
+    }
 
 `
 
@@ -264,6 +276,8 @@ export const InputLabel = styled.label`
     font-family: Quicksand;
     font-size: 15px;
     color: white;
+
+
 `
 
 export const FormBox = styled.form`
@@ -272,6 +286,17 @@ export const FormBox = styled.form`
     justify-content: center;
     margin-top: 20px;
     padding: 40px 60px;
+`
+
+export const SmallText = styled.h2`
+    font-family: Quicksand;
+    color: #414141;
+    font-size: 13px;
+    margin-top: 20px;
+    a{
+        color: #78a000;
+    }
+
 `
 
 export { Section, SectionTwo, IntroBox, WelcomeMsg, SpecWords, Testimonial, Container, SmallContainer, TitleText, BulletPoints, Box }
