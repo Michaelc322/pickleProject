@@ -202,7 +202,7 @@ export const Fields = styled.input`
     color: white;
     font-size: 14px;
     padding: 15px;
-    margin: 5px 0px 20px 0;
+    margin: 5px 7px 20px 7px;
     border-radius: 10px;
     outline: none;
     border: 1px solid #111111;
@@ -276,6 +276,7 @@ export const InputLabel = styled.label`
     font-family: Quicksand;
     font-size: 15px;
     color: white;
+    margin: 0px 10px 0px 10px;
 
 
 `
@@ -296,6 +297,12 @@ export const SmallText = styled.h2`
     a{
         color: #78a000;
     }
+
+`
+
+export const NameCon = styled.div`
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
 
 `
 
