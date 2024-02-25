@@ -25,7 +25,11 @@ export default function App(){
         <link rel="icon" type="image/png" href="./images/pickleball.png"/>
       </Helmet>
         <Navbar/>
-        <Toaster position='bottom-right' toastOptions={{duration: 2000}}/>
+        <Toaster position='bottom-right' toastOptions={{duration: 2000,
+        style:{
+          padding: '16px',
+          fontFamily: 'Poppins'
+        }}}/>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home/>}/>
