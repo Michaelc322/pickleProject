@@ -125,7 +125,6 @@ const Box = styled.div`
     backdrop-filter: blur(20px);
     z-index: 11;
     transform: translate(-80px, 50px);
-    animation: ${UserSlide} 1s linear;
 
 `
 
@@ -165,7 +164,6 @@ const PickleImage = styled.div`
     width: 800px;
     height: 400px;
     overflow: hidden;
-    animation: ${SlideInFadeRight} 1s linear;
     img{
         z-index: 8;
         position: absolute;
@@ -281,10 +279,11 @@ function Home(){
                 </Container>
                 <SmallContainer>
                     <GetStartedButton>
-                        <a href="/getstarted">Get Started</a>
+                        <a href="/register">Sign Up</a>
                     </GetStartedButton>
                 </SmallContainer>
             </SectionTwo>
+
         </>
     )
 }

@@ -19,13 +19,12 @@ axios.defaults.withCredentials = true;
 export default function App(){
   return(
     <>
-    <UserContextProvider>
       <Helmet>
         <title>pickleBOT | Reserve Courts</title>
         <link rel="icon" type="image/png" href="./images/pickleball.png"/>
       </Helmet>
         <Navbar/>
-        <Toaster position='bottom-right' toastOptions={{duration: 2000,
+        <Toaster position='top-center' toastOptions={{duration: 2000,
         style:{
           padding: '16px',
           fontFamily: 'Poppins'
@@ -40,7 +39,6 @@ export default function App(){
       </BrowserRouter>
 
       <Footer/>
-    </UserContextProvider>
     </>
   )
 }

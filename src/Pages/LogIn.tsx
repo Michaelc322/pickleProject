@@ -7,12 +7,14 @@ import { Helmet } from 'react-helmet';
 
 export default function LogIn() { 
     const navigate = useNavigate();
+    const [error, setError] = useState('');
 
     const [data, setData] = useState({
         email: '',
         password: ''
     })
 
+    axios.defaults.withCredentials = true;
     const loginUser = async(e: React.FormEvent) => {
         e.preventDefault();
         const {email, password} = data;
@@ -23,7 +25,8 @@ export default function LogIn() {
             });
 
             if(data.error){
-                toast.error(data.error)
+                setError(data.error)
+               // toast.error(data.error)
             } else {
                 setData({email: '', password: ''})
                 toast.success('Logged in successfully!')
@@ -47,12 +50,14 @@ export default function LogIn() {
         <Container>
             <FormContainer>
                 <h1>Log In</h1>
+                {error && <p className="loginError">{error}</p>}
                 <FormBox onSubmit={loginUser}>
                     <InputLabel>Email</InputLabel>
                     <Fields type="text" placeholder='Enter email...' value={data.email} onChange={(e: React.FormEvent<HTMLInputElement>) => setData({...data, email: e.currentTarget.value})}/>
                     <InputLabel>Password</InputLabel>
                     <Fields type="password" placeholder='Enter password...' value={data.password} onChange={(e: React.FormEvent<HTMLInputElement>) => setData({...data, password: e.currentTarget.value})}/>
                     <SubmitButton type='submit'><span>Log In</span></SubmitButton>
+
                 </FormBox>
             </FormContainer>
         </Container>

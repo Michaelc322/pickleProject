@@ -222,7 +222,7 @@ export const SubmitButton = styled.button`
     border-radius: 50px;
     height:40px;
     text-align: center;
-    margin-top: 10px;
+    margin: 10px;
     font-size: 18px;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
     transform: scale(1);
@@ -305,5 +305,6 @@ export const NameCon = styled.div`
     grid-template-columns: 1fr 1fr;
 
 `
+
 
 export { Section, SectionTwo, IntroBox, WelcomeMsg, SpecWords, Testimonial, Container, SmallContainer, TitleText, BulletPoints, Box }

@@ -95,8 +95,8 @@ function Navbar(){
             </LogoNav>
 
             <nav>
-                <NavLink href="getstarted">Get Started</NavLink>
-                <NavLink href="login">Log In</NavLink>
+                <NavLink href="getstarted">Documentation</NavLink>
+                <NavLink href="register">Sign Up</NavLink>
             </nav>
 
               

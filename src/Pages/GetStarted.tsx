@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { SlideInFadeLeft } from "../Styles/AnimationComponents";
 import { Keyword, KeywordAssigned, KeywordName } from "../Styles/CodeSnippet";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Section = styled.section`
     display: flex;
@@ -94,6 +97,19 @@ const CodeContainer = styled.div`
 `
 
 function GetStarted() {
+    const navigate = useNavigate();
+    axios.defaults.withCredentials = true;
+
+    useEffect(() => {
+        axios.get("/verify")
+        .then(res=> {
+            if(res.data.status){
+                console.log("User is logged in")
+            } else {
+                navigate("/login")
+            }
+        })
+    }, [])
   return (
     <>
     <Section>
