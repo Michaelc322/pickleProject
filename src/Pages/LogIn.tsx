@@ -1,43 +1,72 @@
 import { useState } from 'react';
-import { Box, Container, Fields, FormBox, FormContainer, InputLabel, Section, SmallText, SubmitButton, TitleText } from '../Components/LogInComponents';
+import { Box, Container, Fields, FormBox, FormContainer, InputLabel, Section, SmallLink, SmallText, SubmitButton, TitleText } from '../Components/LogInComponents';
 import axios from 'axios';
 import {toast} from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import * as yup from 'yup';
+import { useFormik } from 'formik';
 
 export default function LogIn() { 
-    const navigate = useNavigate();
-    const [error, setError] = useState('');
-
-    const [data, setData] = useState({
-        email: '',
-        password: ''
+    axios.defaults.withCredentials = true;
+    const basicSchema = yup.object().shape({
+        email: yup.string().email('Invalid email').required('Required'),
+        password: yup.string().required('Required')
     })
 
-    axios.defaults.withCredentials = true;
-    const loginUser = async(e: React.FormEvent) => {
-        e.preventDefault();
-        const {email, password} = data;
-        try {
-            const {data} = await axios.post('/login',{
-                email, 
-                password
-            });
+    const [error, setError] = useState('');
 
-            if(data.error){
-                setError(data.error)
-               // toast.error(data.error)
-            } else {
-                setData({email: '', password: ''})
-                toast.success('Logged in successfully!')
-                navigate('/getstarted')
+
+    const navigate = useNavigate();
+    const { values, errors, touched, handleChange, handleSubmit } = useFormik({
+        initialValues: {
+            email: '',
+            password: ''
+        },
+        validationSchema: basicSchema,
+        onSubmit: async (values) => {
+            try {
+                const {data} = await axios.post('/login', values);
+
+                localStorage.setItem('token', data.token);
+
+                if(data.error){
+                    toast.error(data.error);
+                    setError(data.error);
+                } else {
+                    toast.success('Logged in successfully!')
+                    navigate('/getstarted')
+                }
             }
-
-
-        } catch (error) {
-            
+            catch (error) {
+                console.log(error);
+            }
         }
-    }
+    })
+
+    // const loginUser = async(e: React.FormEvent) => {
+    //     e.preventDefault();
+    //     const {email, password} = data;
+    //     try {
+    //         const {data} = await axios.post('/login',{
+    //             email, 
+    //             password
+    //         });
+
+    //         if(data.error){
+    //             setError(data.error)
+    //            // toast.error(data.error)
+    //         } else {
+    //             setData({email: '', password: ''})
+    //             toast.success('Logged in successfully!')
+    //             navigate('/getstarted')
+    //         }
+
+
+    //     } catch (error) {
+            
+    //     }
+    // }
 
 
   return (
@@ -51,11 +80,15 @@ export default function LogIn() {
             <FormContainer>
                 <h1>Log In</h1>
                 {error && <p className="loginError">{error}</p>}
-                <FormBox onSubmit={loginUser}>
+                <FormBox onSubmit={handleSubmit}>
                     <InputLabel>Email</InputLabel>
-                    <Fields type="text" placeholder='Enter email...' value={data.email} onChange={(e: React.FormEvent<HTMLInputElement>) => setData({...data, email: e.currentTarget.value})}/>
+                    <Fields autoComplete="off" className={errors.email && touched.email ? "input-error" : ""} id="email" type="text" placeholder='Enter email...' value={values.email} onChange={handleChange}/>
+                    {errors.email && touched.email && <p className="error">{errors.email}</p>}
                     <InputLabel>Password</InputLabel>
-                    <Fields type="password" placeholder='Enter password...' value={data.password} onChange={(e: React.FormEvent<HTMLInputElement>) => setData({...data, password: e.currentTarget.value})}/>
+                    <Fields autoComplete="off" className={errors.password && touched.email? "input-error" : ""} id="password" type="password" placeholder='Enter password...' value={values.password} onChange={handleChange}/>
+                    {errors.password && touched.email && <p className="error">{errors.password}</p>}
+
+                    <SmallLink href="/forgot-password">Forgot password?</SmallLink>
                     <SubmitButton type='submit'><span>Log In</span></SubmitButton>
 
                 </FormBox>

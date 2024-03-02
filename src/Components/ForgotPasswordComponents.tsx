@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components"
-import { FadeUp, SlideInFadeLeft, SlideInFadeRight } from "../Styles/AnimationComponents";
+import { FadeUp, SlideInFadeLeft } from "../Styles/AnimationComponents";
 
 
 
@@ -297,18 +297,6 @@ export const SmallText = styled.h2`
         color: #78a000;
     }
 
-`
-
-export const SmallLink = styled.a`
-    font-family: Quicksand;
-    font-weight: 800;
-    font-size: 13px;
-    position: relative;
-    top: -10px;
-    left: 5px;
-    width: 118px;
-    margin-bottom: 5px;
-    color: #78a000;
 `
 
 export { Section, SectionTwo, IntroBox, WelcomeMsg, SpecWords, Testimonial, Container, SmallContainer, TitleText, BulletPoints, Box }

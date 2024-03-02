@@ -1,7 +1,9 @@
 
 import styled, { keyframes } from 'styled-components';
 import { SlideInFadeRight } from '../Styles/AnimationComponents';
-
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const FadeUp = keyframes`
     0% {
@@ -86,6 +88,12 @@ padding-left: 10px;
 `
 
 function Navbar(){
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    
+
+    
+    
   return (
     <>
         <Nav>
@@ -95,8 +103,12 @@ function Navbar(){
             </LogoNav>
 
             <nav>
-                <NavLink href="getstarted">Documentation</NavLink>
-                <NavLink href="register">Sign Up</NavLink>
+                <NavLink href="/getstarted">Documentation</NavLink>
+                {isLoggedIn ? (
+                    <NavLink href="/">Log Out</NavLink>
+                ) : (
+                    <NavLink href="/register">Sign Up</NavLink>
+                )}
             </nav>
 
               

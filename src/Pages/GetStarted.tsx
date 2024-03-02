@@ -101,14 +101,27 @@ function GetStarted() {
     axios.defaults.withCredentials = true;
 
     useEffect(() => {
-        axios.get("/verify")
-        .then(res=> {
-            if(res.data.status){
-                console.log("User is logged in")
-            } else {
+        const token = localStorage.getItem('token');
+        if(token){
+            // Set the Authorization header with the token
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            };
+            axios.get("/auth/user/", config)
+            .then(res=> {
+                console.log("User is logged in", res.data)
+            }).catch(error => {
+                console.log("User is not logged in", error)
                 navigate("/login")
-            }
-        })
+            
+            })
+        }
+        else{
+            console.log("token is missing")
+            navigate('/login');
+        }
     }, [])
   return (
     <>
