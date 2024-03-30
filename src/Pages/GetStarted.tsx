@@ -4,6 +4,7 @@ import { Keyword, KeywordAssigned, KeywordName } from "../Styles/CodeSnippet";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
+import { useAuth } from "../../context/AuthProvider";
 
 const Section = styled.section`
     display: flex;
@@ -99,30 +100,31 @@ const CodeContainer = styled.div`
 function GetStarted() {
     const navigate = useNavigate();
     axios.defaults.withCredentials = true;
-
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        if(token){
-            // Set the Authorization header with the token
-            const config = {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            };
-            axios.get("/auth/user/", config)
+        // const token = localStorage.getItem('token');
+        // if(token){
+        //     // Set the Authorization header with the token
+        //     const config = {
+        //         headers: {
+        //             Authorization: `Bearer ${token}`
+        //         }
+        //     };
+            axios.get("/auth/user/", { withCredentials: true })
             .then(res=> {
-                console.log("User is logged in", res.data)
+                console.log("trying to verify for getting started", res.data);
             }).catch(error => {
-                console.log("User is not logged in", error)
-                navigate("/login")
-            
+                console.log("failed to verify getting started", error.response.data)
+                navigate('/login')
             })
-        }
-        else{
-            console.log("token is missing")
-            navigate('/login');
-        }
+        //}
+        // else{
+        //     console.log("token is missing")
+        //     navigate('/login')
+        // }
     }, [])
+
+
+
   return (
     <>
     <Section>

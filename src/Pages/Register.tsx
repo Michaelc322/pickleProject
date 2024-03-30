@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Container, Fields, FormBox, InputLabel, NameCon, SmallText, SubmitButton } from '../Components/RegisterComponents';
-import { FormContainer, Section } from '../Components/LogInComponents';
+import { FormContainer, Section } from '../Components/RegisterComponents';
 import axios from 'axios';
 import {toast} from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import * as yup from 'yup';
-import { Formik, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import '../Styles/styles.css';
 
 export default function Register() {

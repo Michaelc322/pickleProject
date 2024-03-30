@@ -1,11 +1,22 @@
-import styled, { keyframes } from "styled-components"
-import { FadeUp, SlideInFadeLeft, SlideInFadeRight } from "../Styles/AnimationComponents";
+import styled from "styled-components"
+import { FadeUp, SlideInFadeLeft } from "../Styles/AnimationComponents";
+import { device } from "../Styles/breakpoints";
 
 
 
 const Section = styled.section`
     display: flex;
-    padding: 80px;
+    width: 100%;
+    align-items: center;
+    background-color: #121212;
+    height: 100vh;
+    flex-direction: column;
+    
+`
+
+const SectionTwo = styled.section`
+    display: flex;
+    width: 100%;
     align-items: center;
     background-color: #121212;
     height: 80vh;
@@ -13,27 +24,6 @@ const Section = styled.section`
     
 `
 
-const SectionTwo = styled.section`
-    display: flex;
-    padding: 80px;
-    align-items: center;
-    background-color: #121212;
-    height: 65vh;
-    flex-direction: column;
-    
-`
-
-const UserSlide = keyframes`
-    0% {
-        opacity: 0%;
-        transform: translateX(0) scale(1);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateX(-80) scale(1);
-    }
-`
 const IntroBox = styled.div`
     display: flex;
     justify-content: center;
@@ -44,6 +34,7 @@ const IntroBox = styled.div`
 `
 
 const WelcomeMsg = styled.h1`
+    margin-top: 80px;
     text-align: center;
     font-family: Josefin Sans;
     color: white;
@@ -67,17 +58,40 @@ const Testimonial = styled.div`
     align-items: center;
     position: relative;
     width: 1150px;
+    left: 60px;
 
+    @media ${device.lg}{
+        width: 800px;
+    
+    }
+
+    @media ${device.md}{
+        width: 80%;
+    }
+    @media ${device.sm}{
+        left: 0px;
+        width: 250px;
+        height: 400px;
+        flex-direction: column;
+    }
 
 `
 const Container = styled.div`
+    margin-top: 80px;
+    
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     position: relative;
-    width: 1150px;
+    width: 1000px;
     font-family: Poppins;
+    text-align: center;
+
+    @media ${device.lg}{
+        width: 300px;
+    
+    }
 `
 
 const SmallContainer = styled.div`
@@ -89,6 +103,7 @@ const SmallContainer = styled.div`
     width: 200px;
     font-family: Poppins;
     margin-top: 80px;
+
 `
 
 const TitleText = styled.h1`
@@ -97,6 +112,11 @@ const TitleText = styled.h1`
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-size: 50px;
+
+    @media ${device.lg}{
+        font-size: 40px;
+    
+    }
 
 `
 
@@ -126,11 +146,25 @@ const Box = styled.div`
     z-index: 11;
     transform: translate(-80px, 50px);
 
+    @media ${device.sm}{
+        transform: translate(0px, 20px);
+        width: 300px;
+        padding: 0px;
+        height: 10rem;
+        border-radius: 1em;
+    }
+
 `
 
 const UserProfile = styled.div`
+
+    position: relative;
     display: flex;
 
+    @media ${device.sm}{
+
+        padding-left: 10px;
+    }
 `
 const Name = styled.div`
     display: flex;
@@ -141,15 +175,30 @@ const Name = styled.div`
     }
     h2{
         line-height: 24px;
+        @media ${device.sm}{
+
+            line-height: 15px;
+        }
+    }
+    @media ${device.sm}{
+
+        font-size: 10px;
     }
 `
 const TMessage = styled.div`
     font-family: Quicksand;
-    line-height: 23px;
+    line-height: 15px;
     position: relative;
     p{
         color: white;
     }
+
+    @media ${device.sm}{
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 14px;
+    }
+
 `
 const ProfilePic = styled.div`
     position: relative;
@@ -157,7 +206,12 @@ const ProfilePic = styled.div`
         border-radius: 50%;
         height: 50px;
         margin-right: 12px;
+        @media ${device.sm}{
+        height: 30px;
     }
+    }
+
+
 `
 const PickleImage = styled.div`
     position: relative;
@@ -166,13 +220,18 @@ const PickleImage = styled.div`
     overflow: hidden;
     img{
         z-index: 8;
-        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: 10px;
+        position: absolute;
+
+    }
+    @media ${device.sm}{
+            width: 100%;
+            height: 100%;
     }
 `
 
@@ -190,6 +249,7 @@ const GetStartedButton = styled.button`
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
     transform: scale(1);
     transition: 0.5s;
+
     a{
         width:100%;
         line-height: 28px;

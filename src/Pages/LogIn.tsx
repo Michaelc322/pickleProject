@@ -1,14 +1,19 @@
 import { useState } from 'react';
-import { Box, Container, Fields, FormBox, FormContainer, InputLabel, Section, SmallLink, SmallText, SubmitButton, TitleText } from '../Components/LogInComponents';
+import { Container, Fields, FormBox, FormContainer, InputLabel, Section, SmallLink, SmallText, SubmitButton } from '../Components/LogInComponents';
 import axios from 'axios';
 import {toast} from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
+import { useAuth } from '../../context/AuthProvider';
+import '../Styles/styles.css';
+
+
 
 export default function LogIn() { 
     axios.defaults.withCredentials = true;
+    const { login, setUserInfo } = useAuth() as any;
     const basicSchema = yup.object().shape({
         email: yup.string().email('Invalid email').required('Required'),
         password: yup.string().required('Required')
@@ -27,15 +32,16 @@ export default function LogIn() {
         onSubmit: async (values) => {
             try {
                 const {data} = await axios.post('/login', values);
+                setUserInfo(data.user);
 
-                localStorage.setItem('token', data.token);
-
+                //localStorage.setItem('token', data.token);
                 if(data.error){
                     toast.error(data.error);
                     setError(data.error);
                 } else {
                     toast.success('Logged in successfully!')
                     navigate('/getstarted')
+                    login();
                 }
             }
             catch (error) {
@@ -43,30 +49,6 @@ export default function LogIn() {
             }
         }
     })
-
-    // const loginUser = async(e: React.FormEvent) => {
-    //     e.preventDefault();
-    //     const {email, password} = data;
-    //     try {
-    //         const {data} = await axios.post('/login',{
-    //             email, 
-    //             password
-    //         });
-
-    //         if(data.error){
-    //             setError(data.error)
-    //            // toast.error(data.error)
-    //         } else {
-    //             setData({email: '', password: ''})
-    //             toast.success('Logged in successfully!')
-    //             navigate('/getstarted')
-    //         }
-
-
-    //     } catch (error) {
-            
-    //     }
-    // }
 
 
   return (
